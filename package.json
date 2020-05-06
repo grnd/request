@@ -42,14 +42,17 @@
     "qs": "~6.2.0",
     "stringstream": "~0.0.4",
     "tough-cookie": "~2.3.0",
-    "tunnel-agent": "~0.4.1"
+    "tunnel-agent": "~0.4.1",
+    "snyk": "^1.319.0"
   },
   "scripts": {
     "test": "npm run lint && npm run test-ci && npm run test-browser",
     "test-ci": "taper tests/test-*.js",
     "test-cov": "istanbul cover tape tests/test-*.js",
     "test-browser": "node tests/browser/start.js",
-    "lint": "eslint lib/ *.js tests/ && echo Lint passed."
+    "lint": "eslint lib/ *.js tests/ && echo Lint passed.",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "devDependencies": {
     "bluebird": "^3.2.1",
@@ -79,5 +82,6 @@
       "hawk",
       "har-validator"
     ]
-  }
+  },
+  "snyk": true
 }
